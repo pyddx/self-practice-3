@@ -1,0 +1,37 @@
+สร้างระบบ CRUD (Create, Read, Update, Delete)
+ตามที่เข้าใจคือใช้ฟอร์มเพื่อเพิ่ม/แก้ไขข้อมูล ถ้าจะเชื่อมต่อกับ Backend ใช้แบบAPI Fetch fetch() กับ async/await 
+สำหรับ GET, POST, PUT, DELETE จะทำการตรวจ error handling ด้วย try/catch 
+
+Create: addQuote() → POST → เพิ่ม quote ใหม่ทั้ง backend + DOM 
+Read: loadQuotes() → GET → โหลด quotes จาก backend แล้วแสดงใน DOM
+Update: editQuote() → PUT → แก้ไข quote และ update ใน DOM
+Delete: deleteQuote() → DELETE → ลบ quote ทั้ง backend + DOM 
+
+ fetch() API
+   - fetch(url) = ดึงข้อมูล
+   - method: "POST" = เพิ่ม
+   - method: "PUT" = แก้ไข
+   - method: "DELETE" = ลบ
+
+ async/await
+   - async function = ฟังก์ชันรอได้
+   - await = รอให้เสร็จก่อน
+   - ใช้กับ fetch เสมอ
+
+ try/catch
+   - try = ลองทำ
+   - catch = จับ error
+   - สำคัญมากสำหรับ API
+
+ JSON
+   - JSON.stringify() = object → string
+   - JSON.parse() = string → object
+   - res.json() = แปลง response
+
+ DOM
+   - createElement() = สร้าง element
+   - appendChild() = เพิ่มเข้าไป
+   - remove() = ลบออก
+   - querySelector() = หา element
+
+resetForm() เพื่อเคลียร์ค่าต่างๆ เมื่อกดปุ่มยกเลิก หรืออัปเดตเสร็จแค่นี้คั้บ

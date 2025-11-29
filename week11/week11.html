@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 11 - CRUD</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial;
+        }
+        input, textarea {
+            display: block;
+            margin: 5px 0;
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+        #quoteList {
+            list-style: none;
+            padding: 0;
+        }
+        .quote-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 11: CRUD System</h1>
+    
+    <!-- ส่วนกรอกข้อมูล -->
+    <h2>เพิ่ม/แก้ไข Quote</h2>
+    <input type="text" id="quoteInput" placeholder="Quote">
+    <textarea id="authorInput" placeholder="Author"></textarea>
+    <button id="addBtn">เพิ่ม</button>
+    <button id="cancelBtn" onclick="resetForm()" style="display:none;">ยกเลิก</button>
+    
+    <hr>
+    
+    <!-- ส่วนแสดงรายการ -->
+    <h2>รายการ Quotes</h2>
+    <ul id="quoteList"></ul>
+    
+    <hr>
+    
+    <!-- คำแนะนำ -->
+    <h3>📝 Self-Practice Exercises:</h3>
+    <p>1. ลองเพิ่ม quote ใหม่</p>
+    <p>2. ลองกดแก้ไข แล้วกดอัปเดต</p>
+    <p>3. ลองกดลบ</p>
+    <p>4. เปิด Console (F12) ดู log</p>
+    <p>5. อ่านโค้ดใน week11.js ทีละบรรทัด</p>
+    <p>6. ลองทำแบบฝึกหัดท้ายไฟล์</p>
+    
+    <script src="week11.js"></script>
+</body>
+</html>
