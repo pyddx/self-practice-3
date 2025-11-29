@@ -9,7 +9,7 @@ let isEditing = false; // กำลังแก้ไขอยู่หรือ
 let editingId = null; // ID ที่กำลังแก้ไข
 
 
-// 1. READ - โหลดข้อมูล (GET)
+// READ - โหลดข้อมูล (GET)
 // ภารกิจที่ 1: การดึงข้อมูล (READ)
 // สร้างฟังก์ชัน loadQuotes() (Async Function)
 // ใช้ fetch ดึงข้อมูลจาก API_URL
@@ -78,7 +78,7 @@ function displayQuotes(quotes) {
     });
 }
 
-// 2. CREATE - เพิ่มข้อมูล (POST)
+// CREATE - เพิ่มข้อมูล (POST)
 // ภารกิจที่ 3: การเพิ่มข้อมูล (CREATE)
 // สร้างฟังก์ชัน addQuote()
 // รับค่าจาก input ทั้งสองช่อง
@@ -173,9 +173,7 @@ function addQuoteToDOM(quote) {
     list.insertBefore(li, list.firstChild);
 }
 
-// 3. UPDATE - แก้ไขข้อมูล (PUT)
-
-
+// UPDATE - แก้ไขข้อมูล (PUT)
 function editQuote(id, title, body) {
     // เปลี่ยนเป็นโหมดแก้ไข
     isEditing = true;
@@ -240,7 +238,7 @@ function updateQuoteInDOM(id, newTitle, newBody) {
     }
 }
 
-// 4. DELETE - ลบข้อมูล (DELETE)
+// DELETE - ลบข้อมูล (DELETE)
 async function deleteQuote(id) {
     // ยืนยันก่อนลบ
     const confirm = window.confirm("ต้องการลบใช่หรือไม่?");
