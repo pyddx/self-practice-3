@@ -1,0 +1,38 @@
+keycloak.html (Login Gateway)
+ใช้เมื่อ: เข้าครั้งแรก หรือ Force Login
+ทำอะไร: Redirect ไป Keycloak Login → เก็บ Token → ไป reserve.html
+
+keycloak-auth.js (Auth Library)
+ใช้เมื่อ: ทุกหน้าที่ต้อง Login
+ทำอะไร: ตรวจสอบ Token, Refresh Token, ดึง User Info, Logout
+
+User → keycloak.html → Keycloak Server → Login Success → reserve.html
+                                        ↓
+                                   JWT Token (ใน sessionStorage)
+                                        ↓
+                              ใช้ Token เรียก API Backend
+
+index.html → คลิก "Manage study plan" → keycloak.html
+
+## 🛡️ Security Flow
+```
+1. User Login → Keycloak ออก Token
+2. Frontend เก็บ Token ใน sessionStorage (ไม่ใช่ localStorage = ปลอดภัยกว่า)
+3. ทุกครั้งที่เรียก API → ส่ง Token ไปด้วย
+4. Backend ตรวจสอบ Token กับ Keycloak
+5. Token ถูกต้อง → ให้ข้อมูล
+6. Token หมดอายุ → Refresh หรือ Login ใหม่
+
+
+
+| **keycloak.html**     Login Gateway   เข้าครั้งแรก, Force Login |
+| **keycloak-auth.js**  Auth Helper     ทุกหน้าที่ต้อง Login      |
+| **reserve.js**        Business Logic  หน้าจอหลัก (ต้อง Login) |
+
+**Flow:**
+```
+index.html → keycloak.html → Keycloak Login → reserve.html
+                                  ↓
+                            JWT Token (sessionStorage)
+                                  ↓
+                            ใช้ Token เรียก API
