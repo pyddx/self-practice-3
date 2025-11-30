@@ -1,0 +1,49 @@
+การทำจากhttpเป็นhttps 
+
+project/
+├── docker-compose.yml
+├── back/
+│   ├── server.js
+│   ├── dockerfile
+│   └── package.json
+├── front/
+│   ├── nginx/
+│   │   └── ssl/
+│   │       ├── certificate.crt     (สร้างใหม่)
+│   │       └── private.key         (สร้างใหม่)
+│   ├── web/
+│   │   ├── index.html
+│   │   ├── keycloak-auth.js        (แก้ไข)
+│   │   ├── keycloak.html
+│   │   ├── reserve.css
+│   │   ├── reserve.html
+│   │   ├── reserve.js              (แก้ไข)
+│   │   ├── script.js
+│   │   ├── style.css
+│   │   ├── test.html
+│   │   ├── test.js
+│   │   ├── package.json
+│   │   ├── vite.config.js
+│   │   └── dist/                   (หลัง build)
+│   ├── backup-default
+│   ├── default                      (แก้ไข - nginx config)
+│   ├── dockerfile
+│   └── reverse-proxy.conf
+└── db/
+    └── init.sql
+
+ไฟล์ที่ต้องแก้ไข:
+1. สร้างโฟลเดอร์และไฟล์ SSL ใหม่ = "mkdir -p nginx/ssl"
+# สร้าง self-signed certificate
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout front/nginx/ssl/private.key \
+  -out front/nginx/ssl/certificate.crt \
+  -subj "/C=TH/ST=Bangkok/L=Bangkok/O=KMUTT/CN=ip25or3.sit.kmutt.ac.th"
+
+2. docker-compose.yml เพิ่มเข้าไป - ./front/nginx/ssl:/etc/nginx/ssl:ro
+3. front/default เพิ่ม HTTPS Server listen 443
+4. แก้ไข front-web/keycloak-auth.js (เปลี่ยน HTTP → HTTPS)
+5. แก้ไข front-web/reserve.js (เปลี่ยน HTTP → HTTPS)
+
+
+
